@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Outfit, Source_Serif_4 } from "next/font/google";
 
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -7,24 +6,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { absoluteUrl, siteConfig } from "@/site.config";
 
 import "./globals.css";
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-  display: "swap",
-});
-
-const sourceSerif = Source_Serif_4({
-  subsets: ["latin"],
-  variable: "--font-source-serif",
-  display: "swap",
-});
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -45,6 +26,8 @@ export const metadata: Metadata = {
     "nuclear",
     "electric grid",
     "electric vehicles",
+    "robotics",
+    "space",
     "technology news",
   ],
   alternates: {
@@ -72,29 +55,25 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f0e6" },
-    { media: "(prefers-color-scheme: dark)", color: "#121411" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#111111" },
   ],
   colorScheme: "light dark",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${outfit.variable} ${sourceSerif.variable} ${fraunces.variable} h-full antialiased`}
-    >
-      <body className="flex min-h-full flex-col bg-paper font-serif text-ink">
+    <html lang="en" suppressHydrationWarning className="h-full">
+      <body className="flex min-h-full flex-col bg-bg font-serif text-fg">
         <ThemeProvider>
           <a
             href="#content"
-            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:font-sans focus:text-paper"
+            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-fg focus:px-3 focus:py-2 focus:text-bg"
           >
             Skip to content
           </a>
           <Header />
-          <main id="content" className="flex-1">
+          <main id="content" tabIndex={-1} className="flex-1 outline-none">
             {children}
           </main>
           <Footer />

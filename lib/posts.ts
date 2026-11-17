@@ -5,7 +5,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import matter from "gray-matter";
 
-import { isCategory, type Category } from "@/lib/categories";
+import { CATEGORIES, categoryFromSlug, isCategory, type Category } from "@/lib/categories";
 import { formatDate, tagSlug } from "@/lib/format";
 import { renderMarkdown } from "@/lib/markdown";
 import type { Post, PostCardData, PostSource, PostTag, TagSummary } from "@/lib/types";
@@ -199,7 +199,7 @@ async function parsePostFile(filename: string, raw: string): Promise<{ post: Pos
 
   const category = typeof data.category === "string" ? data.category.trim() : "";
   if (!isCategory(category)) {
-    problems.push("category must be exactly one of: AI, Energy, Other");
+    problems.push(`category must be exactly one of: ${CATEGORIES.join(", ")}`);
   }
 
   const tags = parseTags(data.tags, problems);
@@ -328,13 +328,38 @@ export async function getAllTags(): Promise<TagSummary[]> {
     }
   }
 
+  const latest = posts[0]?.date ?? "";
+  for (const category of CATEGORIES) {
+    const slug = category.toLowerCase();
+    if (!map.has(slug)) {
+      map.set(slug, {
+        slug,
+        name: category,
+        count: 0,
+        latestDate: latest,
+      });
+    }
+  }
+
   return [...map.values()].sort((a, b) => a.name.localeCompare(b.name));
 }
 
 export async function getPostsByTag(slug: string): Promise<{ tag: TagSummary; posts: Post[] } | null> {
   const posts = await getAllPosts();
   const matched = posts.filter((post) => post.tags.some((tag) => tag.slug === slug));
-  if (matched.length === 0) return null;
+  if (matched.length === 0) {
+    const category = categoryFromSlug(slug);
+    if (!category) return null;
+    return {
+      tag: {
+        slug,
+        name: category,
+        count: 0,
+        latestDate: posts[0]?.date ?? "",
+      },
+      posts: [],
+    };
+  }
 
   const name = matched[0]?.tags.find((tag) => tag.slug === slug)?.name ?? slug;
   return {

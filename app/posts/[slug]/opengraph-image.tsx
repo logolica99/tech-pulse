@@ -1,11 +1,12 @@
 import { ImageResponse } from "next/og";
 
 import { OgCard, ogSize } from "@/components/og-card";
+import { ogFonts } from "@/lib/og-fonts";
 import { getAllPosts, getPost } from "@/lib/posts";
 
 export const size = ogSize;
 export const contentType = "image/png";
-export const alt = "Tech Pulse article";
+export const alt = "Blogs article";
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -15,8 +16,11 @@ export async function generateStaticParams() {
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = await getPost(slug);
-  const title = post?.title ?? "Tech Pulse";
-  const kicker = post ? `${post.category} · ${post.dateLabel}` : "Daily briefing";
+  const title = post?.title ?? "Blogs";
+  const kicker = post ? `${post.category} · ${post.dateLabel}` : "Daily edition";
 
-  return new ImageResponse(<OgCard kicker={kicker} title={title} />, { ...size });
+  return new ImageResponse(<OgCard kicker={kicker} title={title} />, {
+    ...size,
+    fonts: await ogFonts(),
+  });
 }

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect } from "react";
 
-import { Button } from "@/components/ui/button";
+import { Sheet } from "@/components/sheet";
 
 export default function Error({
   error,
@@ -17,20 +17,18 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="mx-auto w-full max-w-2xl px-5 py-20 sm:py-28">
-      <p className="font-sans text-xs uppercase tracking-[0.18em] text-copper">Error</p>
-      <h1 className="mt-3 font-display text-4xl tracking-tight sm:text-5xl">This page did not load.</h1>
-      <p className="mt-4 max-w-md text-lg text-muted">
-        The briefing is still there. Try this page again, or go back to the latest posts.
-      </p>
-      <div className="mt-8 flex flex-wrap gap-3">
-        <Button type="button" onClick={reset}>
+    <Sheet className="py-8">
+      <h1 className="text-xl">This page did not load.</h1>
+      <p className="mt-3 text-muted">Try again, or go back to the posts.</p>
+      <p className="mt-4">
+        <button type="button" onClick={reset} className="underline underline-offset-4">
           Try again
-        </Button>
-        <Button variant="outline" asChild>
-          <Link href="/">Back to the briefing</Link>
-        </Button>
-      </div>
-    </div>
+        </button>
+        {" · "}
+        <Link href="/" className="underline underline-offset-4">
+          Home
+        </Link>
+      </p>
+    </Sheet>
   );
 }

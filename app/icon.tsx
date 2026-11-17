@@ -1,9 +1,11 @@
 import { ImageResponse } from "next/og";
 
+import { ogFonts } from "@/lib/og-fonts";
+
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
-export default function Icon() {
+export default async function Icon() {
   return new ImageResponse(
     (
       <div
@@ -13,15 +15,15 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#14352c",
-          color: "#f4f0e6",
-          fontSize: 18,
-          fontWeight: 700,
+          backgroundColor: "#ffffff",
+          color: "#1a1a1a",
+          fontFamily: "Playfair",
+          fontSize: 20,
         }}
       >
-        T
+        B
       </div>
     ),
-    { ...size },
+    { ...size, fonts: await ogFonts() },
   );
 }

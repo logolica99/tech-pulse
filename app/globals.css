@@ -5,89 +5,83 @@
 
 :root {
   color-scheme: light;
-  --paper: #f4f0e6;
-  --raised: #fbf8f1;
-  --ink: #1c1914;
-  --muted: #534d44;
-  --line: #e2d8c6;
-  --accent: #0c5c4b;
-  --copper: #9a431f;
-  --chip: #efe6d4;
+  --bg: #ffffff;
+  --fg: #1a1a1a;
+  --muted: #555555;
+  --line: #e6e6e6;
 }
 
 .dark {
   color-scheme: dark;
-  --paper: #121411;
-  --raised: #1b1e19;
-  --ink: #f3efe6;
-  --muted: #c3bbae;
-  --line: #31362e;
-  --accent: #8ed0b3;
-  --copper: #e39a72;
-  --chip: #262a24;
+  --bg: #111111;
+  --fg: #eeeeee;
+  --muted: #aaaaaa;
+  --line: #333333;
 }
 
 @theme inline {
-  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-source-serif), Georgia, "Times New Roman", serif;
-  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
-  --color-paper: var(--paper);
-  --color-raised: var(--raised);
-  --color-ink: var(--ink);
+  --font-serif: Georgia, "Iowan Old Style", Palatino, "Palatino Linotype", serif;
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
   --color-muted: var(--muted);
   --color-line: var(--line);
-  --color-accent: var(--accent);
-  --color-copper: var(--copper);
-  --color-chip: var(--chip);
 }
 
 html {
-  scroll-behavior: smooth;
+  background: var(--bg);
 }
 
 body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: Georgia, "Iowan Old Style", Palatino, "Palatino Linotype", serif;
+  font-size: 1.0625rem;
+  line-height: 1.7;
   text-rendering: optimizeLegibility;
 }
 
+:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 3px;
+}
+
 ::selection {
-  background: var(--accent);
-  color: var(--paper);
+  background: var(--fg);
+  color: var(--bg);
 }
 
 .prose {
-  --tw-prose-body: var(--ink);
-  --tw-prose-headings: var(--ink);
-  --tw-prose-lead: var(--muted);
-  --tw-prose-links: var(--accent);
-  --tw-prose-bold: var(--ink);
+  --tw-prose-body: var(--fg);
+  --tw-prose-headings: var(--fg);
+  --tw-prose-links: var(--fg);
+  --tw-prose-bold: var(--fg);
+  --tw-prose-quotes: var(--fg);
+  --tw-prose-quote-borders: var(--line);
   --tw-prose-counters: var(--muted);
-  --tw-prose-bullets: var(--copper);
+  --tw-prose-bullets: var(--muted);
   --tw-prose-hr: var(--line);
-  --tw-prose-quotes: var(--ink);
-  --tw-prose-quote-borders: var(--copper);
   --tw-prose-captions: var(--muted);
-  --tw-prose-code: var(--ink);
-  --tw-prose-pre-code: var(--ink);
-  --tw-prose-pre-bg: var(--chip);
+  --tw-prose-code: var(--fg);
+  --tw-prose-pre-code: var(--fg);
+  --tw-prose-pre-bg: color-mix(in srgb, var(--fg) 5%, var(--bg));
   --tw-prose-th-borders: var(--line);
   --tw-prose-td-borders: var(--line);
-}
-
-.prose :where(h2, h3, h4) {
-  font-family: var(--font-fraunces), Georgia, serif;
-  letter-spacing: -0.02em;
+  font-size: 1.0625rem;
+  line-height: 1.75;
 }
 
 .prose :where(a) {
-  text-underline-offset: 3px;
+  text-underline-offset: 2px;
+}
+
+.prose :where(h2, h3) {
+  font-weight: 600;
+  letter-spacing: 0;
 }
 
 .prose :where(pre) {
   border: 1px solid var(--line);
-  border-radius: 0.75rem;
+  border-radius: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 
 import { JsonLd } from "@/components/json-ld";
-import { PostIndex } from "@/components/post-index";
+import { PostList } from "@/components/post-list";
+import { Sheet } from "@/components/sheet";
 import { getAllPosts, toCard } from "@/lib/posts";
 import { absoluteUrl, siteConfig } from "@/site.config";
 
-const title = `${siteConfig.name} — AI, energy, and notable tech`;
+const title = `${siteConfig.name} — AI, energy, robotics, and space`;
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -20,10 +21,9 @@ export const metadata: Metadata = {
 
 export default async function HomePage() {
   const posts = (await getAllPosts()).map(toCard);
-  const latest = posts[0];
 
   return (
-    <div className="mx-auto w-full max-w-2xl px-5 py-12 sm:py-16">
+    <Sheet className="py-8">
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -44,17 +44,8 @@ export default async function HomePage() {
           })),
         }}
       />
-      <p className="font-sans text-xs uppercase tracking-[0.18em] text-copper">Daily briefing</p>
-      <h1 className="mt-3 font-display text-4xl leading-[1.08] tracking-tight text-ink sm:text-6xl">
-        AI, energy, and the technology around them.
-      </h1>
-      <p className="mt-5 max-w-prose text-lg leading-relaxed text-muted">
-        Edited by {siteConfig.author.name}. Recent posts are listed newest first.
-        {latest ? ` The latest is from ${latest.dateLabel}.` : ""}
-      </p>
-      <div className="mt-10">
-        <PostIndex posts={posts} />
-      </div>
-    </div>
+      <h1 className="sr-only">{siteConfig.name}</h1>
+      <PostList posts={posts} />
+    </Sheet>
   );
 }

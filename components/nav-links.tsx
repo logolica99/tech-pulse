@@ -1,11 +1,13 @@
 import Link from "next/link";
 
+import { CATEGORIES, categoryPath } from "@/lib/categories";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { href: "/", label: "Briefing" },
+  ...CATEGORIES.map((category) => ({ href: categoryPath(category), label: category })),
   { href: "/about", label: "About" },
-] as const;
+  { href: "/rss.xml", label: "RSS" },
+];
 
 function isCurrent(href: string, pathname: string | null): boolean {
   if (!pathname) return false;
@@ -15,29 +17,23 @@ function isCurrent(href: string, pathname: string | null): boolean {
 
 export function NavLinks({ current }: { current: string | null }) {
   return (
-    <nav aria-label="Primary" className="flex items-center gap-1 font-sans text-sm">
+    <nav aria-label="Sections" className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
       {links.map((link) => {
         const active = isCurrent(link.href, current);
+        const className = cn("underline underline-offset-4", active ? "text-fg" : "text-muted");
+        if (link.href.endsWith(".xml")) {
+          return (
+            <a key={link.href} href={link.href} className={className}>
+              {link.label}
+            </a>
+          );
+        }
         return (
-          <Link
-            key={link.href}
-            href={link.href}
-            aria-current={active ? "page" : undefined}
-            className={cn(
-              "rounded-full px-3 py-2 text-muted transition-colors hover:bg-chip hover:text-ink",
-              active && "bg-chip text-ink",
-            )}
-          >
+          <Link key={link.href} href={link.href} aria-current={active ? "page" : undefined} className={className}>
             {link.label}
           </Link>
         );
       })}
-      <a
-        href="/rss.xml"
-        className="rounded-full px-3 py-2 text-muted transition-colors hover:bg-chip hover:text-ink"
-      >
-        RSS
-      </a>
     </nav>
   );
 }

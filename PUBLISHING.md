@@ -42,13 +42,17 @@ draft: false
 | `date` | yes | Quoted `YYYY-MM-DD`. Must be a real calendar date and must equal the date in the file name. |
 | `summary` | yes | One line, 40–320 characters. |
 | `tags` | yes | 1–6 labels. Each label is 2–32 characters and may contain letters, numbers, spaces, `&`, `/`, `+`, and hyphens. |
-| `category` | yes | Exactly `AI`, `Energy`, or `Other`. This drives the home-page filters. |
+| `category` | yes | Exactly one allowed section tag: `AI`, `Energy`, `Robotics`, `Space`, or `Other`. |
 | `sources` | yes | At least one `{ title, url }`. `url` must be an absolute `http` or `https` URL. |
 | `draft` | no | `true` or `false`. Default `false`. Drafts are validated and then omitted from the site, RSS, and sitemap. |
 
 No other frontmatter keys are allowed.
 
-Tag pages are generated from `tags`, at `/tags/<slug>`. The slug is the label lowercased, with spaces and punctuation turned into hyphens. `AI` becomes `/tags/ai`.
+Allowed section tags: `AI`, `Energy`, `Robotics`, `Space`, `Other`.
+
+`category` must be one of those five. It is the section shown in the site navigation and at `/tags/<slug>`. `AI` is `/tags/ai`. `Space` is `/tags/space`. Those section pages are published even when no story is filed there yet.
+
+Any other tag still gets a page when a post uses it. The slug is the label lowercased, with spaces and punctuation turned into hyphens.
 
 Home-page order is publication date, newest first. Same-day posts are ordered by file name, descending.
 
@@ -63,7 +67,7 @@ Every factual claim in the body must be supported by a source in `sources`. Do n
 ## Checklist
 
 1. Create `content/posts/YYYY-MM-DD-slug.md` only.
-2. Fill the frontmatter schema above. Category is `AI`, `Energy`, or `Other`.
+2. Fill the frontmatter schema above. Category is `AI`, `Energy`, `Robotics`, `Space`, or `Other`.
 3. Write the body in Markdown and cite real sources.
 4. Run `npm run build`. It must finish with no post-validation error.
 5. Commit that one file (plus nothing else, unless the build required a fix outside it).

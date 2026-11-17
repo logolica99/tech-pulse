@@ -1,7 +1,7 @@
 import "server-only";
 
 /**
- * Tech Pulse site configuration.
+ * Blogs site configuration.
  *
  * This is the only file to edit when renaming the site or pointing it at a domain.
  *
@@ -12,12 +12,12 @@ import "server-only";
  * 4. The current Vercel deployment host (`VERCEL_URL`).
  * 5. http://localhost:3847 for `npm run dev`.
  *
- * When blog.jubaerjami.com is attached, either set the constant below or set
- * NEXT_PUBLIC_SITE_URL=https://blog.jubaerjami.com
+ * The live origin is https://blogs.jubaerjami.com. RSS, the sitemap, canonical
+ * links, and Open Graph tags use `CANONICAL_SITE_URL` when it is set.
  */
 
-/** One-line domain switch. Example: "https://blog.jubaerjami.com" */
-const CANONICAL_SITE_URL: string | null = null;
+/** Live canonical origin. */
+const CANONICAL_SITE_URL: string | null = "https://blogs.jubaerjami.com";
 
 function normalizeOrigin(value: string): string {
   const trimmed = value.trim().replace(/\/+$/, "");
@@ -44,9 +44,9 @@ function resolveSiteUrl(): string {
 }
 
 export const siteConfig = {
-  name: "Tech Pulse",
+  name: "Blogs",
   description:
-    "A daily briefing on artificial intelligence, energy technology, and other notable tech, edited by Jubaer Jami.",
+    "A daily briefing on artificial intelligence, energy, robotics, space, and other notable tech, edited by Jubaer Jami.",
   url: resolveSiteUrl(),
   author: {
     name: "Jubaer Jami",
