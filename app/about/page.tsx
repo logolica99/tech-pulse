@@ -5,7 +5,8 @@ import { JsonLd } from "@/components/json-ld";
 import { Sheet } from "@/components/sheet";
 import { absoluteUrl, siteConfig } from "@/site.config";
 
-const description = `${siteConfig.name} is a daily technology briefing edited by ${siteConfig.author.name}.`;
+const description =
+  "Toothless writes about AI, energy, robotics, space, and the tech shaping what comes next.";
 
 export const metadata: Metadata = {
   title: "About",
@@ -32,7 +33,7 @@ export default function AboutPage() {
           mainEntity: {
             "@type": "Person",
             name: siteConfig.author.name,
-            url: absoluteUrl("/about"),
+            url: siteConfig.author.url,
           },
         }}
       />
@@ -40,17 +41,19 @@ export default function AboutPage() {
         <h1 className="text-xl">About</h1>
         <div className="mt-6 space-y-4">
           <p>
-            {siteConfig.name} is a daily briefing edited by {siteConfig.author.name}. The beats are
-            artificial intelligence, energy, robotics, and space. Energy includes batteries, solar,
-            nuclear, the grid, and electric vehicles. Other notable tech gets a post when it is worth
-            the space.
+            <a href={siteConfig.author.url} className="underline underline-offset-4">
+              {siteConfig.author.name}
+            </a>{" "}
+            writes about AI, energy, robotics, space, and the tech shaping what comes next. A model
+            that needs a power plant. A robot that finally does the dull job. A launch that either
+            sticks the landing or becomes a very expensive lesson.
           </p>
           <p>
-            A story is one Markdown file. It is published by committing that file, and this page is
-            generated when the site builds. Each post ends with the sources it used. A claim that is
-            not in those sources does not belong in the post.
+            Posts get updated through the day as news breaks. Short ones. The point is to keep up,
+            not to write a book about it.
           </p>
-          <p>The public address is blogs.jubaerjami.com.</p>
+          <p>Every post links its sources. If a claim has nowhere to point, it does not go in.</p>
+          <p>{siteConfig.owner.name} runs the site.</p>
           <p>
             <Link href="/" className="underline underline-offset-4">
               Posts

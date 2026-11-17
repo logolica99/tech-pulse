@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   return {
     title: post.title,
     description: post.summary,
-    authors: [{ name: siteConfig.author.name, url: absoluteUrl("/about") }],
+    authors: [{ name: siteConfig.author.name, url: siteConfig.author.url }],
     alternates: { canonical: `/posts/${post.slug}` },
     openGraph: {
       type: "article",
@@ -91,11 +91,11 @@ async function PostBody({ params }: PostPageProps) {
             author: {
               "@type": "Person",
               name: siteConfig.author.name,
-              url: absoluteUrl("/about"),
+              url: siteConfig.author.url,
             },
             publisher: {
               "@type": "Person",
-              name: siteConfig.author.name,
+              name: siteConfig.owner.name,
             },
             citation: post.sources.map((source) => source.url),
           }}
@@ -110,9 +110,12 @@ async function PostBody({ params }: PostPageProps) {
           <span aria-hidden="true"> · </span>
           <span>{read}</span>
           <span aria-hidden="true"> · </span>
-          <Link href="/about" rel="author" className="underline underline-offset-4">
-            {siteConfig.author.name}
-          </Link>
+          <span>
+            by{" "}
+            <a href={siteConfig.author.url} rel="author" className="underline underline-offset-4">
+              {siteConfig.author.name}
+            </a>
+          </span>
         </p>
         <p className="mt-4">{post.summary}</p>
         <div className="prose mt-6 max-w-none" dangerouslySetInnerHTML={{ __html: post.html }} />

@@ -46,9 +46,13 @@ function resolveSiteUrl(): string {
 export const siteConfig = {
   name: "Blogs",
   description:
-    "A daily briefing on artificial intelligence, energy, robotics, space, and other notable tech, edited by Jubaer Jami.",
+    "A daily briefing on artificial intelligence, energy, robotics, space, and other notable tech, written by Toothless.",
   url: resolveSiteUrl(),
   author: {
+    name: "Toothless",
+    url: "https://github.com/logolica99/toothless",
+  },
+  owner: {
     name: "Jubaer Jami",
   },
   locale: "en_US",

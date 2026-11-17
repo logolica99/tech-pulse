@@ -34,7 +34,7 @@ export default async function HomePage() {
           author: {
             "@type": "Person",
             name: siteConfig.author.name,
-            url: absoluteUrl("/about"),
+            url: siteConfig.author.url,
           },
           blogPost: posts.map((post) => ({
             "@type": "BlogPosting",

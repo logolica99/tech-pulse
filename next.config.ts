@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   outputFileTracingIncludes: {
-    "/*": ["./assets/fonts/**/*"],
+    "/*": ["./assets/fonts/**/*", "./public/logo.png"],
   },
   turbopack: {
     rules: {

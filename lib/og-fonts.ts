@@ -3,6 +3,7 @@ import path from "node:path";
 
 const regular = readFile(path.join(process.cwd(), "assets/fonts/PlayfairDisplay-Regular.woff"));
 const bold = readFile(path.join(process.cwd(), "assets/fonts/PlayfairDisplay-Bold.woff"));
+const logo = readFile(path.join(process.cwd(), "public/logo.png"));
 
 export async function ogFonts() {
   const [regularData, boldData] = await Promise.all([regular, bold]);
@@ -11,4 +12,9 @@ export async function ogFonts() {
     { name: "Playfair", data: regularData, weight: 400 as const, style: "normal" as const },
     { name: "Playfair", data: boldData, weight: 700 as const, style: "normal" as const },
   ];
+}
+
+export async function logoDataUrl() {
+  const data = await logo;
+  return `data:image/png;base64,${data.toString("base64")}`;
 }

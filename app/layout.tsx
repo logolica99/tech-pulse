@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
-import { absoluteUrl, siteConfig } from "@/site.config";
+import { siteConfig } from "@/site.config";
 
 import "./globals.css";
 
@@ -15,9 +15,9 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
-  authors: [{ name: siteConfig.author.name, url: absoluteUrl("/about") }],
+  authors: [{ name: siteConfig.author.name, url: siteConfig.author.url }],
   creator: siteConfig.author.name,
-  publisher: siteConfig.author.name,
+  publisher: siteConfig.owner.name,
   keywords: [
     "artificial intelligence",
     "energy",

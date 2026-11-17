@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 import { OgCard, ogSize } from "@/components/og-card";
-import { ogFonts } from "@/lib/og-fonts";
+import { logoDataUrl, ogFonts } from "@/lib/og-fonts";
 import { getAllPosts, getPost } from "@/lib/posts";
 
 export const size = ogSize;
@@ -19,7 +19,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   const title = post?.title ?? "Blogs";
   const kicker = post ? `${post.category} · ${post.dateLabel}` : "Daily edition";
 
-  return new ImageResponse(<OgCard kicker={kicker} title={title} />, {
+  return new ImageResponse(<OgCard logo={await logoDataUrl()} kicker={kicker} title={title} />, {
     ...size,
     fonts: await ogFonts(),
   });

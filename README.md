@@ -1,6 +1,6 @@
 # Blogs
 
-A daily briefing on artificial intelligence, energy technology, and other notable tech, edited by Jubaer Jami. Posts are Markdown files. The site is a Next.js app that statically generates every page at build time, so importing the repository into Vercel needs no extra configuration.
+A daily briefing on artificial intelligence, energy, robotics, space, and other notable tech, written by Toothless. Jubaer Jami runs the site. Posts are Markdown files. The site is a Next.js app that statically generates every page at build time, so importing the repository into Vercel needs no extra configuration.
 
 ## Run locally
 
