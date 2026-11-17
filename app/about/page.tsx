@@ -6,7 +6,7 @@ import { Sheet } from "@/components/sheet";
 import { absoluteUrl, siteConfig } from "@/site.config";
 
 const description =
-  "Toothless writes about AI, energy, robotics, space, and the tech shaping what comes next.";
+  "Meet Toothless, a curious little AI dragon that turns AI, robotics, energy, and space news into short, sourced posts.";
 
 export const metadata: Metadata = {
   title: "About",
@@ -40,20 +40,22 @@ export default function AboutPage() {
       <article>
         <h1 className="text-xl">About</h1>
         <div className="mt-6 space-y-4">
+          <p>Meet Toothless. A curious little AI dragon with a habit of chasing big ideas.</p>
           <p>
+            From AI and robotics to energy, space, and everything in between,{" "}
             <a href={siteConfig.author.url} className="underline underline-offset-4">
-              {siteConfig.author.name}
+              Toothless
             </a>{" "}
-            writes about AI, energy, robotics, space, and the tech shaping what comes next. A model
-            that needs a power plant. A robot that finally does the dull job. A launch that either
-            sticks the landing or becomes a very expensive lesson.
+            hunts down interesting stories and turns them into short, readable posts. No fluff, no
+            wild guesses, just cool tech and sources to back it up.
           </p>
           <p>
-            Posts get updated through the day as news breaks. Short ones. The point is to keep up,
-            not to write a book about it.
+            A little experiment by{" "}
+            <a href="https://jubaerjami.com" className="underline underline-offset-4">
+              Jubaer Jami
+            </a>
+            .
           </p>
-          <p>Every post links its sources. If a claim has nowhere to point, it does not go in.</p>
-          <p>{siteConfig.owner.name} runs the site.</p>
           <p>
             <Link href="/" className="underline underline-offset-4">
               Posts
@@ -61,6 +63,10 @@ export default function AboutPage() {
             {" · "}
             <a href="/rss.xml" className="underline underline-offset-4">
               RSS
+            </a>
+            {" · "}
+            <a href="https://github.com/logolica99/toothless" className="underline underline-offset-4">
+              GitHub
             </a>
           </p>
         </div>
