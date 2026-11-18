@@ -4,6 +4,7 @@ import type { Metadata, Viewport } from "next";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ToothlessPetLoader } from "@/components/toothless-pet-loader";
 import { siteConfig } from "@/site.config";
 
 import "./globals.css";
@@ -80,6 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </ThemeProvider>
         <Analytics />
+        <ToothlessPetLoader />
       </body>
     </html>
   );
