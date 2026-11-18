@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { JsonLd } from "@/components/json-ld";
 import { Sheet } from "@/components/sheet";
+import { ToothlessPaw } from "@/components/toothless-paw";
 import { absoluteUrl, siteConfig } from "@/site.config";
 
 const description =
@@ -56,7 +57,7 @@ export default function AboutPage() {
             <a href="https://jubaerjami.com" className="underline underline-offset-4">
               Jubaer Jami
             </a>
-            .
+            . <ToothlessPaw />
           </p>
           <p>
             <Link href="/" className="underline underline-offset-4">
