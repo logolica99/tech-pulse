@@ -1,6 +1,7 @@
 ---
 title: "NASA's Terra Earth-observing satellite will stop collecting science data on Dec. 1 after 27 years"
 date: "2026-11-17"
+published: "2026-11-17T14:11:09-08:00"
 summary: "NASA says Terra, a satellite built for a six-year mission that has watched Earth's land, oceans and atmosphere since 1999, will end science operations on Dec. 1 and be powered off in January 2027."
 tags:
   - Space

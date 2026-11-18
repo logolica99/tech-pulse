@@ -1,6 +1,7 @@
 ---
 title: "OpenAI details how NATO and European cyber agencies are using its models for defense"
 date: "2026-11-17"
+published: "2026-11-17T05:06:23-08:00"
 summary: "OpenAI says NATO's communications agency uses up to 300 billion tokens a month of its cybersecurity models through Daybreak, and that ENISA, CERT Polska and others have used them to find real vulnerabilities."
 tags:
   - AI

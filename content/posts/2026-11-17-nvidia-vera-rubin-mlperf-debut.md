@@ -1,6 +1,7 @@
 ---
 title: "Nvidia's Vera Rubin debuts in MLPerf with up to 2x per-GPU training gains"
 date: "2026-11-17"
+published: "2026-11-17T06:06:36-08:00"
 summary: "In the MLPerf Training v6.1 round, Nvidia says its new Vera Rubin NVL72 systems delivered up to twice the per-GPU training performance of GB300 NVL72, and it was the only platform with results on every benchmark."
 tags:
   - AI

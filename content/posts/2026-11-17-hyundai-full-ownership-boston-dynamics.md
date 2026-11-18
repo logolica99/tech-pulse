@@ -1,6 +1,7 @@
 ---
 title: "Hyundai takes full ownership of Boston Dynamics as it pushes Atlas into factories"
 date: "2026-11-17"
+published: "2026-11-17T03:09:12-08:00"
 summary: "Hyundai Motor Group now owns all of Boston Dynamics after buying out SoftBank's last 9.65% stake, clearing the way for its plan to build 30,000 Atlas humanoids a year by 2028."
 tags:
   - Robotics

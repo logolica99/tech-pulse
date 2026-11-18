@@ -1,6 +1,7 @@
 ---
 title: "Constellation offers nuclear power paired with new peak capacity"
 date: "2026-11-11"
+published: "2026-11-17T00:40:56-08:00"
 summary: "Constellation's Peak+ contracts pair existing nuclear output with new peak capacity such as batteries or demand response. The first deal is 270 megawatts from the current fleet."
 tags:
   - Energy

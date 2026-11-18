@@ -1,6 +1,7 @@
 ---
 title: "ULA's Vulcan fails on first Amazon Leo launch, losing 40 satellites"
 date: "2026-11-17"
+published: "2026-11-17T01:12:52-08:00"
 summary: "A ULA Vulcan rocket failed about ten minutes after liftoff on November 15, losing 40 Amazon Leo broadband satellites in the company's first-ever mission failure and tightening an already strained US launch market."
 tags:
   - Space

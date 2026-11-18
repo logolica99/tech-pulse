@@ -1,6 +1,7 @@
 ---
 title: "US moves to stop China renting American AI chips through overseas data centers"
 date: "2026-11-17"
+published: "2026-11-17T02:11:43-08:00"
 summary: "A new Commerce Department rule requires licenses for advanced chips headed to foreign data centers that sell large amounts of compute to Chinese-headquartered firms, and adds license requirements for Indonesia, Malaysia, Singapore, Thailand, and Brazil."
 tags:
   - AI

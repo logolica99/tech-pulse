@@ -1,6 +1,7 @@
 ---
 title: "Moment Energy launches Nova storage system built from used EV batteries"
 date: "2026-11-17"
+published: "2026-11-17T07:15:47-08:00"
 summary: "Moment Energy unveiled Nova, a stationary battery system made from repurposed electric vehicle batteries that the company says is the first of its kind to earn both UL 1973 and UL 9540 certification, with first deliveries planned for early 2027."
 tags:
   - Energy

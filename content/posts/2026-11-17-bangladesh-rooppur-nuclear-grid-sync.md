@@ -1,6 +1,7 @@
 ---
 title: "Bangladesh's Rooppur nuclear plant sends power to the grid for the first time"
 date: "2026-11-17"
+published: "2026-11-17T10:12:48-08:00"
 summary: "Unit 1 of the Russian-built Rooppur Nuclear Power Plant synchronised with Bangladesh's national grid on Tuesday, delivering 350 MW in a trial run that starts roughly ten months of commissioning toward its full 1,200 MW."
 tags:
   - Energy

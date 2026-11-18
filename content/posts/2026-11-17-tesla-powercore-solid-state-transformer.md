@@ -1,6 +1,7 @@
 ---
 title: "Tesla unveils Powercore, a solid-state transformer for solar, storage and data centers"
 date: "2026-11-17"
+published: "2026-11-17T16:14:28-08:00"
 summary: "Tesla introduced Powercore at RE+ 2026, a 7.4 MW unit that combines a solid-state medium-voltage transformer, inverter and breaker, aimed at transformer shortages in solar, battery and AI data center projects. First units are due to operate in 2027."
 tags:
   - Energy

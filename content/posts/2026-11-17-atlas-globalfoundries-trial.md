@@ -1,6 +1,7 @@
 ---
 title: "GlobalFoundries will be the first non-automotive customer to test Boston Dynamics' Atlas"
 date: "2026-11-17"
+published: "2026-11-17T09:15:01-08:00"
 summary: "Chipmaker GlobalFoundries will start testing Boston Dynamics' Atlas humanoid in semiconductor manufacturing in early 2027, the first announced Atlas trial outside Hyundai's car plants, while expanding its Spot inspection fleet."
 tags:
   - Robotics

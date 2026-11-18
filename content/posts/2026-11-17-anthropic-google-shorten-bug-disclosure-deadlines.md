@@ -1,6 +1,7 @@
 ---
 title: "Anthropic and Google Project Zero shorten bug disclosure deadlines as AI speeds up discovery"
 date: "2026-11-17"
+published: "2026-11-17T17:07:53-08:00"
 summary: "Anthropic will publish serious vulnerabilities it reports after 30 days instead of 90 starting January 2027, and Google Project Zero plans to cut its 90-day fix window to 60 days, then 30, because AI now finds and rediscovers bugs much faster."
 tags:
   - AI

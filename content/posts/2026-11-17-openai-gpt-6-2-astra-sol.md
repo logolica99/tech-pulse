@@ -1,6 +1,7 @@
 ---
 title: "OpenAI releases GPT-6.2 Astra and GPT-6.2 Sol"
 date: "2026-11-17"
+published: "2026-11-17T12:08:30-08:00"
 summary: "OpenAI's new GPT-6.2 Astra is its frontier model for hard professional work, with API token prices 20% below GPT-6 Astra, while GPT-6.2 Sol is a cheaper everyday model; both are rolling out in ChatGPT, Codex and the API."
 tags:
   - AI

@@ -1,6 +1,7 @@
 ---
 title: "Tencent releases Hy4 flash, a low-cost model with 12 billion active parameters"
 date: "2026-11-17"
+published: "2026-11-17T10:12:48-08:00"
 summary: "Tencent's new Hy4 flash is a 224-billion-parameter multimodal model that activates only 12 billion parameters per token, has a 1M-token context window and costs about $0.07 per million input tokens, according to the company."
 tags:
   - AI

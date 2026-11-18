@@ -14,6 +14,7 @@ export type PostCardData = {
   slug: string;
   title: string;
   date: string;
+  published: string;
   dateLabel: string;
   summary: string;
   category: Category;

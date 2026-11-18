@@ -24,6 +24,7 @@ Put this block at the top of the file. Quote `title`, `date`, and `summary`.
 ---
 title: "Short headline, 8 to 120 characters"
 date: "2026-11-16"
+published: "2026-11-16T09:05:00-08:00"
 summary: "One sentence, 40 to 320 characters, no line break. This is the card text and the meta description."
 tags:
   - AI
@@ -44,6 +45,7 @@ draft: false
 | `tags` | yes | 1–6 labels. Each label is 2–32 characters and may contain letters, numbers, spaces, `&`, `/`, `+`, and hyphens. |
 | `category` | yes | Exactly one allowed section tag: `AI`, `Energy`, `Robotics`, `Space`, or `Other`. |
 | `sources` | yes | At least one `{ title, url }`. `url` must be an absolute `http` or `https` URL. |
+| `published` | yes for new posts | Quoted ISO date-time of when the post went live, with offset, e.g. `"2026-11-17T13:05:00-08:00"`. Listings sort by this, newest first. Use the current time when you write the post. |
 | `draft` | no | `true` or `false`. Default `false`. Drafts are validated and then omitted from the site, RSS, and sitemap. |
 
 No other frontmatter keys are allowed.
@@ -54,7 +56,7 @@ Allowed section tags: `AI`, `Energy`, `Robotics`, `Space`, `Other`.
 
 Any other tag still gets a page when a post uses it. The slug is the label lowercased, with spaces and punctuation turned into hyphens.
 
-Home-page order is publication date, newest first. Same-day posts are ordered by file name, descending.
+Every listing (home, category, tag pages, RSS) is ordered by `published`, newest first. Posts without it fall back to the start of their `date`.
 
 ## Body
 

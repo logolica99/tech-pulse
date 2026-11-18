@@ -1,6 +1,7 @@
 ---
 title: "California pulls Waymo robotaxis off freeways, and Waymo pauses freeway rides everywhere"
 date: "2026-11-17"
+published: "2026-11-17T16:14:28-08:00"
 summary: "California's DMV barred Waymo's driverless cars from state freeways after repeated drives into active construction zones, and Waymo responded by halting freeway rides in all of its markets while it reviews performance."
 tags:
   - Robotics

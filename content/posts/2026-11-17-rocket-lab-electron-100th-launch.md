@@ -1,6 +1,7 @@
 ---
 title: "Rocket Lab's Electron reaches 100 launches"
 date: "2026-11-17"
+published: "2026-11-17T07:15:47-08:00"
 summary: "Rocket Lab flew its 100th Electron mission on November 14, deploying the YAMATSUMI-II radar satellite for Japan's iQPS and, by the company's count, reaching the milestone faster than any other commercially developed rocket."
 tags:
   - Space

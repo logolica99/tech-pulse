@@ -1,6 +1,7 @@
 ---
 title: "Anthropic cleared to list on Nasdaq as ANT, keeps $70 to $78 IPO range"
 date: "2026-11-17"
+published: "2026-11-17T13:16:16-08:00"
 summary: "A new amended S-1 says Anthropic's Class A shares are approved for the Nasdaq Global Select Market under the ticker ANT, with the price range unchanged and Amazon and Google set to own about 28% combined."
 tags:
   - AI

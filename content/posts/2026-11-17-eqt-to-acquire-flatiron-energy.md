@@ -1,6 +1,7 @@
 ---
 title: "EQT agrees to buy Flatiron Energy and its 24 GWh East Coast battery storage portfolio"
 date: "2026-11-17"
+published: "2026-11-17T14:11:09-08:00"
 summary: "EQT Transition Infrastructure has signed a deal to acquire Flatiron Energy, a developer of utility-scale batteries in New England, New York and the Mid-Atlantic, from Hull Street Energy, with closing expected in Q4 2026."
 tags:
   - Energy

@@ -1,6 +1,7 @@
 ---
 title: "Study: 403 US hyperscale data centers used about 1.8% of the nation's electricity"
 date: "2026-11-17"
+published: "2026-11-17T01:12:52-08:00"
 summary: "A Harvard-led study in Nature Sustainability estimates 403 US hyperscale data centers used about 82 TWh in a year, with roughly 54% of that power coming from fossil fuels and about 25.7 million tonnes of attributable CO2."
 tags:
   - Energy

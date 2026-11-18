@@ -1,6 +1,7 @@
 ---
 title: "Nvidia unveils Rubin HPC, a 50,000-core GPU built for scientific simulation"
 date: "2026-11-17"
+published: "2026-11-17T13:16:16-08:00"
 summary: "Announced at SC26, Rubin HPC is a new Vera Rubin-platform GPU aimed at simulation and analytics rather than pure AI, with a record core count, faster data movement and NVLink 7, due in 2028."
 tags:
   - AI

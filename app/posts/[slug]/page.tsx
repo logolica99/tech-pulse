@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
       title: post.title,
       description: post.summary,
       url: `/posts/${post.slug}`,
-      publishedTime: `${post.date}T00:00:00.000Z`,
+      publishedTime: post.published,
       modifiedTime: `${post.date}T00:00:00.000Z`,
       authors: [siteConfig.author.name],
       tags: post.tags.map((tag) => tag.name),

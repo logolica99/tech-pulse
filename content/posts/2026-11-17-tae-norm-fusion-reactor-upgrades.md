@@ -1,6 +1,7 @@
 ---
 title: "TAE upgrades its Norm fusion reactor in a push toward 100 million degrees"
 date: "2026-11-17"
+published: "2026-11-17T05:06:23-08:00"
 summary: "TAE Technologies says new fueling, neutral-beam and RF heating systems on its Norm reactor aim to lift plasma from 70 million to 100 million °C in 2027, and will carry over to its planned Da Vinci plant."
 tags:
   - Energy

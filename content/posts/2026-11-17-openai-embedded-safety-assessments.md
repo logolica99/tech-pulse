@@ -1,6 +1,7 @@
 ---
 title: "OpenAI brings four outside safety groups inside its labs for embedded assessments"
 date: "2026-11-17"
+published: "2026-11-17T04:12:56-08:00"
 summary: "OpenAI signed agreements with Apollo Research, METR, Transluce and Goodfire to test its models from the inside, with access to checkpoints, training data, code and monitoring systems."
 tags:
   - AI

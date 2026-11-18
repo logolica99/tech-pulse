@@ -1,6 +1,7 @@
 ---
 title: "Reuters: China is distilling US AI models at industrial scale as chip curbs tighten"
 date: "2026-11-17"
+published: "2026-11-17T09:15:01-08:00"
 summary: "A Reuters review of more than 300 Chinese papers, patents, and official documents finds distillation from leading US AI models has moved from academic experiments into mainstream industrial use, with Beijing encouraging it."
 tags:
   - AI

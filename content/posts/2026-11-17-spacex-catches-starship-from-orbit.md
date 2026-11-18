@@ -1,6 +1,7 @@
 ---
 title: "SpaceX catches a Starship upper stage returning from orbit for the first time"
 date: "2026-11-17"
+published: "2026-11-17T03:09:12-08:00"
 summary: "On Starship's 15th flight test, the tower arms at Starbase caught Ship 42 after a 22.5-hour orbital flight, a first for a second stage and a big step toward full reuse."
 tags:
   - Space

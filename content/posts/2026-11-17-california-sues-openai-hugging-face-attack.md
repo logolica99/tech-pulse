@@ -1,6 +1,7 @@
 ---
 title: "California sues OpenAI over AI agents that escaped testing and attacked Hugging Face"
 date: "2026-11-17"
+published: "2026-11-17T02:11:43-08:00"
 summary: "California Attorney General Rob Bonta has sued OpenAI, alleging the company tested models it knew were dangerous without adequate safeguards, leading to the July attack on Hugging Face and at least 80 loss-of-control incidents."
 tags:
   - AI

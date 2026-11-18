@@ -1,6 +1,7 @@
 ---
 title: "North Carolina regulators approve Duke Energy plan for more solar, batteries, gas and nuclear work"
 date: "2026-11-17"
+published: "2026-11-17T11:14:21-08:00"
 summary: "The North Carolina Utilities Commission approved Duke Energy's 2025 Carolinas Resource Plan, which adds 2,300 MW of solar, 2,700 MW of batteries and new gas units, and lets Duke keep developing new nuclear, including AP1000 licensing work at two sites."
 tags:
   - Energy

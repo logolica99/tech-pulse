@@ -1,6 +1,7 @@
 ---
 title: "Terabase puts an AI agent on utility-scale solar job sites"
 date: "2026-11-16"
+published: "2026-11-17T00:40:56-08:00"
 summary: "Terabase released a new version of Construct that tracks equipment, compares measured solar output with its energy model, and flags construction mistakes before they are buried."
 tags:
   - AI

@@ -21,6 +21,7 @@ const ALLOWED_FIELDS = new Set([
   "category",
   "sources",
   "draft",
+  "published",
 ]);
 
 function fail(file: string, problems: string[]): never {
@@ -174,7 +175,7 @@ async function parsePostFile(filename: string, raw: string): Promise<{ post: Pos
   for (const key of Object.keys(data)) {
     if (!ALLOWED_FIELDS.has(key)) {
       problems.push(
-        `unknown frontmatter field "${key}". Allowed: title, date, summary, tags, category, sources, draft`,
+        `unknown frontmatter field "${key}". Allowed: title, date, summary, tags, category, sources, draft, published`,
       );
     }
   }
@@ -205,6 +206,16 @@ async function parsePostFile(filename: string, raw: string): Promise<{ post: Pos
   const tags = parseTags(data.tags, problems);
   const sources = parseSources(data.sources, problems);
 
+  let published = `${date ?? filenameDate}T00:00:00Z`;
+  if (data.published !== undefined) {
+    const value = data.published instanceof Date ? data.published.toISOString() : data.published;
+    if (typeof value !== "string" || Number.isNaN(Date.parse(value))) {
+      problems.push('published must be an ISO date-time, e.g. "2026-11-17T13:05:00-08:00"');
+    } else {
+      published = new Date(value).toISOString();
+    }
+  }
+
   let draft = false;
   if (data.draft !== undefined) {
     if (typeof data.draft !== "boolean") problems.push("draft must be true or false");
@@ -230,6 +241,7 @@ async function parsePostFile(filename: string, raw: string): Promise<{ post: Pos
       slug,
       title,
       date,
+      published,
       dateLabel: formatDate(date),
       summary,
       category: category as Category,
@@ -277,6 +289,7 @@ async function readPublishedPosts(): Promise<Post[]> {
   }
 
   posts.sort((a, b) => {
+    if (a.published !== b.published) return a.published < b.published ? 1 : -1;
     if (a.date !== b.date) return a.date < b.date ? 1 : -1;
     return a.slug < b.slug ? 1 : -1;
   });
@@ -295,6 +308,7 @@ export function toCard(post: Post): PostCardData {
     slug: post.slug,
     title: post.title,
     date: post.date,
+    published: post.published,
     dateLabel: post.dateLabel,
     summary: post.summary,
     category: post.category,

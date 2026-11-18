@@ -1,6 +1,7 @@
 ---
 title: "Nvidia posts $115.8 billion quarter in its first earnings report without Jensen Huang"
 date: "2026-11-17"
+published: "2026-11-17T15:11:42-08:00"
 summary: "Nvidia's revenue doubled from a year ago to $115.8 billion and it guided to about $130 billion next quarter, as interim CEO Colette Kress told investors it is business as usual after Jensen Huang's resignation."
 tags:
   - AI

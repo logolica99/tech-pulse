@@ -1,6 +1,7 @@
 ---
 title: "Voltus lines up a network to put batteries on commercial sites"
 date: "2026-11-16"
+published: "2026-11-17T00:40:56-08:00"
 summary: "Voltus formed a network of developers, financiers, and operators to put batteries on commercial sites, with a stated goal of 1,000 megawatts of new capacity in PJM by 2030."
 tags:
   - Energy

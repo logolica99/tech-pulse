@@ -1,6 +1,7 @@
 ---
 title: "Genesis AI raises $500 million to scale dexterous, glove-trained robots"
 date: "2026-11-17"
+published: "2026-11-17T09:15:01-08:00"
 summary: "Physical AI startup Genesis AI closed a $500 million Series A led by Khosla Ventures, Premji Invest, and Eclipse to push its sensor-glove training data, simulation, and Eno humanoid toward real deployments."
 tags:
   - Robotics

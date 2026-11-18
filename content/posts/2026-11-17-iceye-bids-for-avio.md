@@ -1,6 +1,7 @@
 ---
 title: "ICEYE bids €2.05 billion for Italian rocket maker Avio"
 date: "2026-11-17"
+published: "2026-11-17T06:06:36-08:00"
 summary: "Finnish radar-satellite operator ICEYE launched an all-cash tender offer of €41 per share for Avio, the Italian company behind the Vega rocket, aiming to build a vertically integrated European space and defense group."
 tags:
   - Space

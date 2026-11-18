@@ -1,6 +1,7 @@
 ---
 title: "France publishes a 10-year fusion strategy aimed at a European pilot plant by 2035"
 date: "2026-11-17"
+published: "2026-11-17T08:09:46-08:00"
 summary: "France's research ministry has released a 2026–2035 fusion roadmap built around ITER, the WEST tokamak and the Laser Mégajoule. It targets the technologies for a European pilot plant by 2035 and twice as many students in key fields."
 tags:
   - Energy

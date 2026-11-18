@@ -1,6 +1,7 @@
 ---
 title: "Microsoft launches seven low-cost MAI models and licensed weights at Ignite"
 date: "2026-11-17"
+published: "2026-11-17T11:14:21-08:00"
 summary: "At Ignite, Microsoft AI released seven new MAI models for coding, cyber defense, images, speech and routing, priced to undercut rivals, and introduced MAI Licensed Weights so customers can run customized MAI models in their own Azure environments."
 tags:
   - AI

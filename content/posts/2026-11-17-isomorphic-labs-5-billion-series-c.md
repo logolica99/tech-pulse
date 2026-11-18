@@ -1,6 +1,7 @@
 ---
 title: "Isomorphic Labs raises $5 billion to push AI-designed drugs toward the clinic"
 date: "2026-11-17"
+published: "2026-11-17T08:09:46-08:00"
 summary: "The DeepMind spinout closed a $5 billion Series C co-led by Greenoaks and Sequoia, money it says will scale its IsoDDE drug-design engine and move candidates toward human trials."
 tags:
   - AI

@@ -1,6 +1,7 @@
 ---
 title: "Alibaba launches Qwen4-Max, a 2.4-trillion-parameter flagship without open weights"
 date: "2026-11-17"
+published: "2026-11-17T08:09:46-08:00"
 summary: "Alibaba's new flagship Qwen4-Max is a sparse mixture-of-experts model with a one-million-token context window. It is available only through Alibaba's cloud and apps, and smaller open-weight Qwen4 models are promised later."
 tags:
   - AI

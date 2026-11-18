@@ -1,6 +1,7 @@
 ---
 title: "Google turns Antigravity into a robotics workbench for Gemini 4 Hydrogen"
 date: "2026-11-17"
+published: "2026-11-17T12:08:30-08:00"
 summary: "Google launched a Robotics plugin for its Antigravity tool that handles robot bring-up, MuJoCo simulation and control, built around Gemini 4 Hydrogen, a fast Gemini 4 model with embodied reasoning that Google says rivals Argon on a real robot-arm benchmark."
 tags:
   - Robotics
