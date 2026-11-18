@@ -20,9 +20,6 @@ export async function Footer() {
           </a>
         </p>
         <nav aria-label="Footer" className="flex gap-4">
-          <a href="https://jubaerjami.com" className="underline underline-offset-4">
-            jubaerjami.com
-          </a>
           <Link href="/about" className="underline underline-offset-4">
             About
           </Link>
