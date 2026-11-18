@@ -14,9 +14,15 @@ export async function Footer() {
     <footer className="mt-16 border-t border-line">
       <Sheet className="flex flex-col gap-2 py-6 text-sm text-muted sm:flex-row sm:items-baseline sm:justify-between">
         <p>
-          © {years} {siteConfig.owner.name}
+          © {years}{" "}
+          <a href="https://jubaerjami.com" className="underline underline-offset-4">
+            {siteConfig.owner.name}
+          </a>
         </p>
         <nav aria-label="Footer" className="flex gap-4">
+          <a href="https://jubaerjami.com" className="underline underline-offset-4">
+            jubaerjami.com
+          </a>
           <Link href="/about" className="underline underline-offset-4">
             About
           </Link>
