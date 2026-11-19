@@ -5,6 +5,9 @@ import { useEffect } from "react";
 const SCRIPT_SRC = "/toothless-pet.js";
 const STORAGE_KEY = "toothless_mode";
 const CHANGE_EVENT = "toothless:change";
+const FLY_EVERY_MS = 60_000;
+
+let flyTimer: ReturnType<typeof setInterval> | undefined;
 
 type DesktopPetInstance = {
   pet: () => boolean;
@@ -45,6 +48,30 @@ function setPet(pet: DesktopPetInstance | undefined) {
 function isPetVisible(): boolean {
   const pet = petApi();
   return !!pet && pet.getState() !== "destroyed";
+}
+
+function shouldSkipScheduledFly(): boolean {
+  if (document.hidden) return true;
+  const state = petApi()?.getState();
+  return state === "asking" || state === "petted";
+}
+
+function stopFlyTimer() {
+  if (flyTimer === undefined) return;
+  clearInterval(flyTimer);
+  flyTimer = undefined;
+}
+
+function startFlyTimer() {
+  if (flyTimer !== undefined) return;
+  flyTimer = setInterval(() => {
+    if (!isPetVisible()) {
+      stopFlyTimer();
+      return;
+    }
+    if (shouldSkipScheduledFly()) return;
+    petApi()?.fly();
+  }, FLY_EVERY_MS);
 }
 
 function queryWantsPet(): boolean {
@@ -90,6 +117,7 @@ function stripQueryParam() {
 
 function startPet(flyOnReady: boolean) {
   if (isPetVisible()) {
+    startFlyTimer();
     if (flyOnReady) petApi()?.fly();
     return;
   }
@@ -100,6 +128,7 @@ function startPet(flyOnReady: boolean) {
   petApi()?.destroy();
   const pet = new Ctor({ size: sizeForViewport() });
   setPet(pet);
+  startFlyTimer();
   if (flyOnReady) pet.fly();
   notify();
 }
@@ -127,6 +156,7 @@ function loadPet(flyOnReady: boolean) {
 }
 
 function unloadPet() {
+  stopFlyTimer();
   petApi()?.destroy();
   setPet(undefined);
 }
@@ -222,6 +252,7 @@ export function ToothlessPetLoader() {
     window.addEventListener("keydown", onToothlessKeyDown);
 
     return () => {
+      stopFlyTimer();
       history.pushState = push;
       history.replaceState = replace;
       window.removeEventListener("popstate", syncFromLocation);
