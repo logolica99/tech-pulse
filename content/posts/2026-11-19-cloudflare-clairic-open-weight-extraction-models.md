@@ -1,7 +1,7 @@
 ---
 title: "Cloudflare releases open-weight Clairic and Clairic-flash data extraction models"
 date: "2026-11-19"
-published: "2026-11-19T11:15:00-08:00"
+published: "2026-11-19T11:08:00-08:00"
 summary: "Cloudflare has published open weights for an updated 27B Clairic and a new 9B Clairic-flash, models that pull typed fields from text, images and PDFs, and says its Workers AI team is now building frontier models of its own."
 tags:
   - AI

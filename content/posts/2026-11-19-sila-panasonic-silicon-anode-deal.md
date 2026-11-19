@@ -1,7 +1,7 @@
 ---
 title: "Sila signs silicon anode supply deal with Panasonic Energy it says could top $1 billion"
 date: "2026-11-19"
-published: "2026-11-19T11:15:00-08:00"
+published: "2026-11-19T11:08:00-08:00"
 summary: "Battery materials maker Sila will supply silicon-carbon anode material to Panasonic Energy, a deal Sila says could be worth more than $1 billion and would scale its Moses Lake factory to at least 10 times current output."
 tags:
   - Energy
