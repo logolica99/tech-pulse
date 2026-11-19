@@ -1,5 +1,5 @@
 /**
- * Nightwing desktop pet — standalone, dependency-free, and built from the
+ * Toothless desktop pet — standalone, dependency-free, and built from the
  * supplied sprite sheet. The runtime atlas is embedded below as a data URI.
  */
 (function (global) {
@@ -191,7 +191,7 @@
       this._root.className = "desktop-pet-root";
       this._root.setAttribute("role", "button");
       this._root.setAttribute("tabindex", "0");
-      this._root.setAttribute("aria-label", "Pet Nightwing the dragon");
+      this._root.setAttribute("aria-label", "Pet Toothless the dragon");
       this._sprite = document.createElement("div");
       this._sprite.className = "desktop-pet-sprite";
       this._effects = document.createElement("div");
