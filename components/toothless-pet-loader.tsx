@@ -6,14 +6,45 @@ const SCRIPT_SRC = "/toothless-pet.js";
 const STORAGE_KEY = "toothless_mode";
 const CHANGE_EVENT = "toothless:change";
 
-type ToothlessApi = {
+type DesktopPetInstance = {
   pet: () => boolean;
   fly: () => boolean;
-  destroy: () => void;
+  destroy: () => boolean;
+  reset: () => boolean;
+  getState: () => string;
 };
 
-function petApi(): ToothlessApi | undefined {
-  return (window as Window & { ToothlessPet?: ToothlessApi }).ToothlessPet;
+type DesktopPetCtor = new (options?: {
+  size?: number;
+  margin?: number;
+  autoAsk?: boolean;
+}) => DesktopPetInstance;
+
+type ToothlessWindow = Window & {
+  DesktopPet?: DesktopPetCtor;
+  desktopPet?: DesktopPetInstance;
+};
+
+function toothlessWindow(): ToothlessWindow {
+  return window as ToothlessWindow;
+}
+
+function petCtor(): DesktopPetCtor | undefined {
+  return toothlessWindow().DesktopPet;
+}
+
+function petApi(): DesktopPetInstance | undefined {
+  return toothlessWindow().desktopPet;
+}
+
+function setPet(pet: DesktopPetInstance | undefined) {
+  if (pet) toothlessWindow().desktopPet = pet;
+  else delete toothlessWindow().desktopPet;
+}
+
+function isPetVisible(): boolean {
+  const pet = petApi();
+  return !!pet && pet.getState() !== "destroyed";
 }
 
 function queryWantsPet(): boolean {
@@ -42,8 +73,10 @@ function notify() {
   window.dispatchEvent(new Event(CHANGE_EVENT));
 }
 
-function scaleForViewport(): string {
-  return window.innerWidth < 440 ? "1.5" : "2";
+function sizeForViewport(): number {
+  // Default display size is 90px wide (64px tall). Use a smaller size on
+  // phones so the pet does not cover much of the page text.
+  return window.innerWidth < 440 ? 68 : 90;
 }
 
 function stripQueryParam() {
@@ -55,34 +88,47 @@ function stripQueryParam() {
   history.replaceState(history.state, "", next);
 }
 
-function flyWhenReady() {
-  const run = () => petApi()?.fly();
-  if (petApi()) {
-    run();
-    return;
-  }
-  window.addEventListener("toothless:ready", run, { once: true });
-}
-
-function loadPet(flyOnReady: boolean) {
-  if (petApi()) {
+function startPet(flyOnReady: boolean) {
+  if (isPetVisible()) {
     if (flyOnReady) petApi()?.fly();
     return;
   }
-  if (document.querySelector(`script[src="${SCRIPT_SRC}"]`)) {
-    if (flyOnReady) flyWhenReady();
+
+  const Ctor = petCtor();
+  if (!Ctor) return;
+
+  petApi()?.destroy();
+  const pet = new Ctor({ size: sizeForViewport() });
+  setPet(pet);
+  if (flyOnReady) pet.fly();
+  notify();
+}
+
+function loadPet(flyOnReady: boolean) {
+  if (petCtor()) {
+    startPet(flyOnReady);
     return;
   }
+
+  const onReady = () => startPet(flyOnReady);
+  const existing = document.querySelector<HTMLScriptElement>(`script[src="${SCRIPT_SRC}"]`);
+  if (existing) {
+    existing.addEventListener("load", onReady, { once: true });
+    existing.addEventListener("error", notify, { once: true });
+    return;
+  }
+
   const script = document.createElement("script");
   script.src = SCRIPT_SRC;
-  script.setAttribute("data-scale", scaleForViewport());
-  if (flyOnReady) flyWhenReady();
+  script.setAttribute("data-auto-start", "false");
+  script.addEventListener("load", onReady, { once: true });
+  script.addEventListener("error", notify, { once: true });
   document.body.appendChild(script);
 }
 
 function unloadPet() {
   petApi()?.destroy();
-  document.querySelectorAll(`script[src="${SCRIPT_SRC}"]`).forEach((el) => el.remove());
+  setPet(undefined);
 }
 
 export function isToothlessWanted(): boolean {
@@ -91,7 +137,7 @@ export function isToothlessWanted(): boolean {
 }
 
 export function isToothlessAwake(): boolean {
-  return typeof window !== "undefined" && !!petApi();
+  return typeof window !== "undefined" && isPetVisible();
 }
 
 export function wakeToothless() {
@@ -118,16 +164,14 @@ export function toggleToothless(): boolean {
 
 export function subscribeToothlessChange(listener: () => void) {
   window.addEventListener(CHANGE_EVENT, listener);
-  window.addEventListener("toothless:ready", listener);
   return () => {
     window.removeEventListener(CHANGE_EVENT, listener);
-    window.removeEventListener("toothless:ready", listener);
   };
 }
 
 function syncFromLocation() {
   if (isToothlessWanted()) {
-    const already = !!petApi() || !!document.querySelector(`script[src="${SCRIPT_SRC}"]`);
+    const already = isPetVisible();
     if (queryWantsPet()) writePreference("on");
     loadPet(!already);
     notify();
