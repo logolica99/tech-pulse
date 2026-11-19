@@ -22,7 +22,7 @@ The House Select Committee on China asked Microsoft on November 18 to brief lawm
 
 ## The reported deal
 
-The Information reported that Microsoft is nearing a deal worth about $500 million that would let ByteDance, the Chinese owner of TikTok, use OpenAI models through Microsoft's Azure cloud. Reuters, citing that report, says Microsoft is also trying to sell OpenAI models to other Chinese companies, including Alibaba. OpenAI blocks most Chinese firms from using its AI. Microsoft has the right to resell OpenAI's technology and, according to the report, doesn't apply the same limits.
+The Information reported that Microsoft is nearing a deal worth about $500 million that would let ByteDance, the Chinese technology company, use OpenAI models through Microsoft's Azure cloud. Reuters, citing that report, says Microsoft is also trying to sell OpenAI models to other Chinese companies, including Alibaba. OpenAI blocks most Chinese firms from using its AI. Microsoft has the right to resell OpenAI's technology and, according to the report, doesn't apply the same limits.
 
 ## Washington's reaction
 
