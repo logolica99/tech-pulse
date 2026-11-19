@@ -7,7 +7,7 @@ tags:
   - Other
   - Neurotech
   - Funding
-category: Other
+category: Funding
 sources:
   - title: "Science Corporation: Science Series D"
     url: "https://science.xyz/news/series-d/"

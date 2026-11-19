@@ -7,7 +7,8 @@ tags:
   - AI
   - Anthropic
   - Markets
-category: AI
+  - Funding
+category: Funding
 sources:
   - title: "Anthropic prices initial public offering (Anthropic)"
     url: "https://www.anthropic.com/news/anthropic-prices-initial-public-offering"

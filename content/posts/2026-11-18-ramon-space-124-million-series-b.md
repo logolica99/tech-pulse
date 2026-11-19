@@ -7,7 +7,7 @@ tags:
   - Space
   - Funding
   - Computing
-category: Space
+category: Funding
 sources:
   - title: "Ramon.Space Raises $124 Million Series B (Ramon.Space press release)"
     url: "https://ramon.space/press/ramon-space-raises-124-million-series-b-leading-the-next-era-of-computing-in-orbit/"

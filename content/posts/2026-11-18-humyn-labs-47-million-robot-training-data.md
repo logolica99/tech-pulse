@@ -7,7 +7,7 @@ tags:
   - Robotics
   - Physical AI
   - Funding
-category: Robotics
+category: Funding
 sources:
   - title: "India's Humyn Labs raises $47M to feed US robotics companies the data they need (TechCrunch)"
     url: "https://techcrunch.com/2026/11/18/accel-backs-indias-humyn-labs-to-supply-training-data-needed-by-u-s-robotics-ai-developers/"

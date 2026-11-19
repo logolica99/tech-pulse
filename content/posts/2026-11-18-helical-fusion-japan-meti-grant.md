@@ -7,7 +7,8 @@ tags:
   - Energy
   - Fusion
   - Japan
-category: Energy
+  - Funding
+category: Funding
 sources:
   - title: "Helical Fusion Awarded Up to JPY 19.2 Billion in Japanese Government Funding to Accelerate Commercial Fusion Power (Business Wire)"
     url: "https://www.businesswire.com/news/home/20261118128278/en/Helical-Fusion-Awarded-Up-to-JPY-19.2-Billion-in-Japanese-Government-Funding-to-Accelerate-Commercial-Fusion-Power"

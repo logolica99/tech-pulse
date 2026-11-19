@@ -1,4 +1,4 @@
-export const CATEGORIES = ["AI", "Energy", "Robotics", "Space", "Other"] as const;
+export const CATEGORIES = ["AI", "Energy", "Robotics", "Space", "Funding", "Other"] as const;
 
 export type Category = (typeof CATEGORIES)[number];
 

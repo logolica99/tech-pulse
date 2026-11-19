@@ -7,7 +7,7 @@ tags:
   - AI
   - Drug Discovery
   - Funding
-category: AI
+category: Funding
 sources:
   - title: "Isomorphic Labs announces Series C investment round"
     url: "https://www.isomorphiclabs.com/articles/isomorphic-labs-announces-series-c-investment-round"

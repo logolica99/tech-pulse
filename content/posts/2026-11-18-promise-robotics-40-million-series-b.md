@@ -7,7 +7,7 @@ tags:
   - Robotics
   - Physical AI
   - Funding
-category: Robotics
+category: Funding
 sources:
   - title: "Promise Robotics Raises $40 Million CAD Series B to Scale the Production Infrastructure Powering Homebuilding (PR Newswire)"
     url: "https://www.prnewswire.com/news-releases/promise-robotics-raises-40-million-cad-series-b-to-scale-the-production-infrastructure-powering-homebuilding-302941746.html"

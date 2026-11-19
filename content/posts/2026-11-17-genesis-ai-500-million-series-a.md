@@ -7,7 +7,7 @@ tags:
   - Robotics
   - AI
   - Funding
-category: Robotics
+category: Funding
 sources:
   - title: "Genesis AI raises $500 million to deploy glove-wearing robots (TechCrunch)"
     url: "https://techcrunch.com/2026/11/17/genesis-ai-raises-500-million-to-deploy-electric-glove-wearing-robots/"
