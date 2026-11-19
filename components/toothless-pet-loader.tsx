@@ -137,6 +137,27 @@ function syncFromLocation() {
   }
 }
 
+function isTypingTarget(target: EventTarget | null): boolean {
+  if (!(target instanceof HTMLElement)) return false;
+  if (target.isContentEditable) return true;
+  const tag = target.tagName;
+  return tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT";
+}
+
+function onToothlessKeyDown(event: KeyboardEvent) {
+  if (event.repeat || event.ctrlKey || event.metaKey || event.altKey) return;
+  if (isTypingTarget(event.target)) return;
+
+  if (event.key === "Escape") {
+    if (isToothlessAwake() || isToothlessWanted()) sendToothlessAway();
+    return;
+  }
+
+  if (event.key === "t" || event.key === "T") {
+    toggleToothless();
+  }
+}
+
 export function ToothlessPetLoader() {
   useEffect(() => {
     syncFromLocation();
@@ -154,11 +175,13 @@ export function ToothlessPetLoader() {
       return result;
     };
     window.addEventListener("popstate", syncFromLocation);
+    window.addEventListener("keydown", onToothlessKeyDown);
 
     return () => {
       history.pushState = push;
       history.replaceState = replace;
       window.removeEventListener("popstate", syncFromLocation);
+      window.removeEventListener("keydown", onToothlessKeyDown);
     };
   }, []);
 
