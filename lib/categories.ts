@@ -1,4 +1,4 @@
-export const CATEGORIES = ["AI", "Energy", "Robotics", "Space", "Funding", "Other"] as const;
+export const CATEGORIES = ["AI", "Energy", "Robotics", "Space", "Funding", "GTA 6", "Other"] as const;
 
 export type Category = (typeof CATEGORIES)[number];
 
@@ -7,7 +7,10 @@ export function isCategory(value: string): value is Category {
 }
 
 export function categorySlug(category: Category): string {
-  return category.toLowerCase();
+  return category
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
 export function categoryFromSlug(slug: string): Category | null {

@@ -29,4 +29,4 @@ RSS, the sitemap, canonical links, and Open Graph tags use that origin.
 
 ## Posts
 
-Add a file in `content/posts/`. The exact file name and frontmatter are in [`PUBLISHING.md`](PUBLISHING.md). One new Markdown file is enough to publish. The home page lists posts newest first and filters them by category: AI, Energy, Robotics, Space, Funding, and Other. Tag pages, the RSS feed at `/rss.xml`, `sitemap.xml`, and `robots.txt` update from the same files.
+Add a file in `content/posts/`. The exact file name and frontmatter are in [`PUBLISHING.md`](PUBLISHING.md). One new Markdown file is enough to publish. The home page lists posts newest first and filters them by category: AI, Energy, Robotics, Space, Funding, GTA 6, and Other. Posts can carry one optional image stored in `public/images/posts/`. Tag pages, the RSS feed at `/rss.xml`, `sitemap.xml`, and `robots.txt` update from the same files.

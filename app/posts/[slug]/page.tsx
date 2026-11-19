@@ -98,6 +98,7 @@ async function PostBody({ params }: PostPageProps) {
               name: siteConfig.owner.name,
             },
             citation: post.sources.map((source) => source.url),
+            ...(post.image ? { image: absoluteUrl(post.image.src) } : {}),
           }}
         />
         <h1 className="text-2xl leading-snug sm:text-3xl">{post.title}</h1>
@@ -118,6 +119,13 @@ async function PostBody({ params }: PostPageProps) {
           </span>
         </p>
         <p className="mt-4">{post.summary}</p>
+        {post.image ? (
+          <figure className="mt-6">
+            {/* eslint-disable-next-line @next/next/no-img-element -- plain responsive image, sizes vary per post */}
+            <img src={post.image.src} alt={post.image.alt} className="h-auto w-full" />
+            <figcaption className="mt-2 text-sm text-muted">Image: {post.image.credit}</figcaption>
+          </figure>
+        ) : null}
         <div className="prose mt-6 max-w-none" dangerouslySetInnerHTML={{ __html: post.html }} />
         <p className="mt-8 text-sm">
           {post.tags.map((tag, index) => (

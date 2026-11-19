@@ -22,9 +22,16 @@ export type PostCardData = {
   readingMinutes: number;
 };
 
+export type PostImage = {
+  src: string;
+  alt: string;
+  credit: string;
+};
+
 export type Post = PostCardData & {
   html: string;
   sources: PostSource[];
+  image: PostImage | null;
 };
 
 export type TagSummary = {

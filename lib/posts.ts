@@ -5,12 +5,14 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import matter from "gray-matter";
 
-import { CATEGORIES, categoryFromSlug, isCategory, type Category } from "@/lib/categories";
+import { CATEGORIES, categoryFromSlug, categorySlug, isCategory, type Category } from "@/lib/categories";
 import { formatDate, tagSlug } from "@/lib/format";
 import { renderMarkdown } from "@/lib/markdown";
-import type { Post, PostCardData, PostSource, PostTag, TagSummary } from "@/lib/types";
+import type { Post, PostCardData, PostImage, PostSource, PostTag, TagSummary } from "@/lib/types";
 
 const POSTS_DIR = path.join(process.cwd(), "content", "posts");
+const PUBLIC_DIR = path.join(process.cwd(), "public");
+const IMAGE_PATH = /^\/images\/posts\/[a-z0-9]+(?:-[a-z0-9]+)*\.(jpg|jpeg|png|webp)$/;
 const FILE_NAME = /^(\d{4}-\d{2}-\d{2})-([a-z0-9]+(?:-[a-z0-9]+)*)\.(md|mdx)$/;
 
 const ALLOWED_FIELDS = new Set([
@@ -22,6 +24,9 @@ const ALLOWED_FIELDS = new Set([
   "sources",
   "draft",
   "published",
+  "image",
+  "imageAlt",
+  "imageCredit",
 ]);
 
 function fail(file: string, problems: string[]): never {
@@ -153,6 +158,40 @@ function parseTags(value: unknown, problems: string[]): PostTag[] {
   return tags;
 }
 
+async function parseImage(data: Record<string, unknown>, problems: string[]): Promise<PostImage | null> {
+  const { image, imageAlt, imageCredit } = data;
+  if (image === undefined) {
+    if (imageAlt !== undefined || imageCredit !== undefined) {
+      problems.push("imageAlt and imageCredit need an image");
+    }
+    return null;
+  }
+
+  const src = typeof image === "string" ? image.trim() : "";
+  const alt = typeof imageAlt === "string" ? imageAlt.trim() : "";
+  const credit = typeof imageCredit === "string" ? imageCredit.trim() : "";
+
+  if (!IMAGE_PATH.test(src)) {
+    problems.push(
+      'image must be a path like "/images/posts/2026-11-19-slug.jpg" (lowercase, .jpg, .jpeg, .png or .webp)',
+    );
+    return null;
+  }
+
+  try {
+    await fs.access(path.join(PUBLIC_DIR, src));
+  } catch {
+    problems.push(`image file public${src} does not exist`);
+  }
+
+  if (alt.length < 8 || alt.length > 200) problems.push("imageAlt must be 8 to 200 characters");
+  if (credit.length < 2 || credit.length > 80) {
+    problems.push('imageCredit must be 2 to 80 characters, e.g. "Rockstar Games"');
+  }
+
+  return { src, alt, credit };
+}
+
 async function parsePostFile(filename: string, raw: string): Promise<{ post: Post; draft: boolean }> {
   const file = `content/posts/${filename}`;
   const problems: string[] = [];
@@ -175,7 +214,7 @@ async function parsePostFile(filename: string, raw: string): Promise<{ post: Pos
   for (const key of Object.keys(data)) {
     if (!ALLOWED_FIELDS.has(key)) {
       problems.push(
-        `unknown frontmatter field "${key}". Allowed: title, date, summary, tags, category, sources, draft, published`,
+        `unknown frontmatter field "${key}". Allowed: title, date, summary, tags, category, sources, draft, published, image, imageAlt, imageCredit`,
       );
     }
   }
@@ -205,6 +244,7 @@ async function parsePostFile(filename: string, raw: string): Promise<{ post: Pos
 
   const tags = parseTags(data.tags, problems);
   const sources = parseSources(data.sources, problems);
+  const image = await parseImage(data, problems);
 
   let published = `${date ?? filenameDate}T00:00:00Z`;
   if (data.published !== undefined) {
@@ -249,6 +289,7 @@ async function parsePostFile(filename: string, raw: string): Promise<{ post: Pos
       readingMinutes: readingMinutes(body),
       html,
       sources,
+      image,
     },
   };
 }
@@ -344,7 +385,7 @@ export async function getAllTags(): Promise<TagSummary[]> {
 
   const latest = posts[0]?.date ?? "";
   for (const category of CATEGORIES) {
-    const slug = category.toLowerCase();
+    const slug = categorySlug(category);
     if (!map.has(slug)) {
       map.set(slug, {
         slug,
@@ -360,9 +401,12 @@ export async function getAllTags(): Promise<TagSummary[]> {
 
 export async function getPostsByTag(slug: string): Promise<{ tag: TagSummary; posts: Post[] } | null> {
   const posts = await getAllPosts();
-  const matched = posts.filter((post) => post.tags.some((tag) => tag.slug === slug));
+  const category = categoryFromSlug(slug);
+  const matched = posts.filter(
+    (post) =>
+      post.tags.some((tag) => tag.slug === slug) || (category !== null && post.category === category),
+  );
   if (matched.length === 0) {
-    const category = categoryFromSlug(slug);
     if (!category) return null;
     return {
       tag: {
@@ -375,7 +419,7 @@ export async function getPostsByTag(slug: string): Promise<{ tag: TagSummary; po
     };
   }
 
-  const name = matched[0]?.tags.find((tag) => tag.slug === slug)?.name ?? slug;
+  const name = category ?? matched[0]?.tags.find((tag) => tag.slug === slug)?.name ?? slug;
   return {
     tag: {
       slug,
