@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ToothlessPetLoader } from "@/components/toothless-pet-loader";
+import { GTA6_NAV_EXPIRES_AT } from "@/lib/gta6";
 import { siteConfig } from "@/site.config";
 
 import "./globals.css";
@@ -67,6 +68,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning className="h-full">
       <body className="flex min-h-full flex-col bg-bg font-serif text-fg">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{document.documentElement.setAttribute("data-gta6-nav",Date.now()<Date.parse(${JSON.stringify(GTA6_NAV_EXPIRES_AT)})?"on":"off")}catch(e){}})();`,
+          }}
+        />
         <ThemeProvider>
           <a
             href="#content"

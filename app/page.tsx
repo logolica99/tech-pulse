@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/json-ld";
 import { PostList } from "@/components/post-list";
 import { Sheet } from "@/components/sheet";
+import { isGta6Post } from "@/lib/gta6";
 import { getAllPosts, toCard } from "@/lib/posts";
 import { absoluteUrl, siteConfig } from "@/site.config";
 
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const posts = (await getAllPosts()).map(toCard);
+  const posts = (await getAllPosts()).filter((post) => !isGta6Post(post)).map(toCard);
 
   return (
     <Sheet className="py-8">

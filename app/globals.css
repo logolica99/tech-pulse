@@ -89,3 +89,65 @@ body {
     scroll-behavior: auto;
   }
 }
+
+
+/* Temporary GTA 6 nav wordmark: sunset gradient like the official logo.
+   Hidden automatically after the end of Friday, 27 Nov 2026, Pacific Time. */
+.gta6-nav-link {
+  background-image: linear-gradient(90deg, #d12b74 0%, #ee4e62 32%, #f08a3a 68%, #f0b56a 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-decoration-color: #ee4e62;
+  text-decoration-thickness: from-font;
+}
+
+.dark .gta6-nav-link {
+  background-image: linear-gradient(90deg, #ff5a9c 0%, #ff7a6e 32%, #ffb04a 68%, #ffd6a0 100%);
+  text-decoration-color: #ff7a8a;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gta6-nav-link {
+    background-image: linear-gradient(
+      105deg,
+      #d12b74 0%,
+      #ee4e62 26%,
+      #ffe0b8 38%,
+      #f08a3a 52%,
+      #ee4e62 74%,
+      #f0b56a 100%
+    );
+    background-size: 220% 100%;
+    background-position: 100% 50%;
+    animation: gta6-nav-shine 4.5s ease-in-out 1.2s infinite;
+  }
+
+  .dark .gta6-nav-link {
+    background-image: linear-gradient(
+      105deg,
+      #ff5a9c 0%,
+      #ff7a6e 26%,
+      #fff0d0 38%,
+      #ffb04a 52%,
+      #ff7a6e 74%,
+      #ffd6a0 100%
+    );
+  }
+}
+
+@keyframes gta6-nav-shine {
+  0%,
+  18% {
+    background-position: 100% 50%;
+  }
+  58%,
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+html[data-gta6-nav="off"] .gta6-nav-link {
+  display: none;
+}

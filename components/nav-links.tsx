@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { Gta6NavLink } from "@/components/gta6-nav-link";
 import { CATEGORIES, categoryPath } from "@/lib/categories";
 import { cn } from "@/lib/utils";
 
@@ -20,6 +21,9 @@ export function NavLinks({ current }: { current: string | null }) {
     <nav aria-label="Sections" className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
       {links.map((link) => {
         const active = isCurrent(link.href, current);
+        if (link.label === "GTA 6") {
+          return <Gta6NavLink key={link.href} href={link.href} active={active} />;
+        }
         const className = cn("underline underline-offset-4", active ? "text-fg" : "text-muted");
         if (link.href.endsWith(".xml")) {
           return (
