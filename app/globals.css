@@ -94,6 +94,13 @@ body {
 /* Temporary GTA 6 nav wordmark: sunset gradient like the official logo.
    Hidden automatically after the end of Friday, 27 Nov 2026, Pacific Time. */
 .gta6-nav-link {
+  display: inline-block;
+  font-weight: 400;
+  font-synthesis: none;
+  font-size: 0.95em;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
   background-image: linear-gradient(90deg, #d12b74 0%, #ee4e62 32%, #f08a3a 68%, #f0b56a 100%);
   background-clip: text;
   -webkit-background-clip: text;

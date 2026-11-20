@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect } from "react";
 
+import { gta6NavFont } from "@/lib/gta6-font";
 import { GTA6_NAV_EXPIRES_AT, isGta6NavLive } from "@/lib/gta6";
 
 function syncGta6NavVisibility() {
@@ -22,7 +23,7 @@ export function Gta6NavLink({ href, active }: { href: string; active: boolean })
     <Link
       href={href}
       aria-current={active ? "page" : undefined}
-      className="gta6-nav-link underline underline-offset-4"
+      className={`${gta6NavFont.className} gta6-nav-link underline underline-offset-4`}
     >
       GTA 6
     </Link>
