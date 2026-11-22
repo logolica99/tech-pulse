@@ -79,7 +79,7 @@ A section page lists every post filed in that `category`, plus any post carrying
 - Open with the direct answer in bold (`**Short answer: ...**`), then context in `##` sections.
 - End with a `## Official or not?` section that separates what Rockstar, Take-Two, or a platform holder (Sony, Microsoft) said from reports, reviewers' counts, analyst guesses, rumors, or leaks. Label rumors and leaks as such; never present them as fact.
 - Never invent facts. Every claim needs a source you opened. Prefer Rockstar Newswire, rockstargames.com, Take-Two releases, and the PlayStation or Xbox store pages, then major outlets.
-- No duplicates. Before writing, check `content/posts/` for an existing GTA 6 post on the same question. If the answer changed (for example a new date), write a new post only if the news itself is new, and say what changed.
+- No duplicates. Before writing, use the [Duplicate check](#duplicate-check) against the compact index; do not read every file in `content/posts/`. If the answer changed (for example a new date), write a new post only if the news itself is new, say what changed, and link the earlier post.
 - Avoid story spoilers beyond chapter names unless the question needs them.
 
 ## Images
@@ -105,10 +105,36 @@ The page appends a **Sources** section from `sources`. Do not paste that list ag
 
 Every factual claim in the body must be supported by a source in `sources`. Do not invent numbers, quotes, companies, or URLs. If a figure comes from a company announcement, say so. If you cannot open and verify a source, do not publish the post.
 
+## Duplicate check
+
+Do not read every file in `content/posts/`. Use the compact index at `content/post-index.tsv` (one short line per post: date, slug, category, title, key entities, and normalized source URLs).
+
+```bash
+# Skim posts from the last 21 days
+node scripts/post-index.mjs recent --days 21
+
+# Run once per candidate story
+node scripts/post-index.mjs check --title "Short headline" --urls "https://example.com/a,https://example.com/b" --entities "Company,Person" --days 21
+```
+
+`--days` defaults to 21. `check` prints `DUPLICATE` when a normalized source URL already appears in the index, and `POSSIBLE` when the title is a strong overlap or the story shares entities with a post from that window. It prints `OK` when the story is clean.
+
+- Skip any story that is a `DUPLICATE`.
+- For `POSSIBLE`, only publish when there is genuinely new information. Frame the post as an update: say what is new and link the earlier post (`/posts/<date>-<slug>`).
+- After adding or editing posts, regenerate the index and commit it with them:
+
+```bash
+npm run index
+```
+
+The site build does not use the index. Do not add this command to `prebuild`; a script failure must not take down production.
+
 ## Checklist
 
-1. Create `content/posts/YYYY-MM-DD-slug.md` (plus its image in `public/images/posts/`, if it has one).
-2. Fill the frontmatter schema above. Category is `AI`, `Energy`, `Robotics`, `Space`, `Funding`, `GTA 6`, or `Other`. Use `Funding` when the main news is a company raising money (a round, grant, IPO, or raise), and keep a `Funding` tag plus a topic tag.
-3. Write the body in Markdown and cite real sources.
-4. Run `npm run build`. It must finish with no post-validation error.
-5. Commit that file and its image (plus nothing else, unless the build required a fix outside it).
+1. Before writing, run `recent` and `check` as in [Duplicate check](#duplicate-check). Skip `DUPLICATE` stories. Only write a `POSSIBLE` match when there is genuinely new information, and then frame it as an update that links the earlier post.
+2. Create `content/posts/YYYY-MM-DD-slug.md` (plus its image in `public/images/posts/`, if it has one).
+3. Fill the frontmatter schema above. Category is `AI`, `Energy`, `Robotics`, `Space`, `Funding`, `GTA 6`, or `Other`. Use `Funding` when the main news is a company raising money (a round, grant, IPO, or raise), and keep a `Funding` tag plus a topic tag.
+4. Write the body in Markdown and cite real sources.
+5. Run `npm run index` so `content/post-index.tsv` includes the new post.
+6. Run `npm run build`. It must finish with no post-validation error.
+7. Commit the post file, its image if any, and `content/post-index.tsv` (plus nothing else, unless the build required a fix outside it).
